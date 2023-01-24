@@ -6,6 +6,7 @@ import {
   Inter_400Regular,
   Inter_700Bold,
   Inter_800ExtraBold,
+  Inter_600SemiBold
 } from "@expo-google-fonts/inter";
 import { Loading } from "./src/components/Loading";
 
@@ -16,6 +17,7 @@ export default function App() {
     Inter_400Regular,
     Inter_700Bold,
     Inter_800ExtraBold,
+    Inter_600SemiBold,
   });
 
   if(!fontsLoaded) {

@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useCallback } from "react";
 import { Text, View, ScrollView, Alert } from "react-native";
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import { Header } from "../components/Header";
 import { HabitDay, DAY_SIZE } from "./../components/HabitDay";
 import { api } from "../lib/axios";
@@ -31,10 +31,8 @@ export function Home() {
     try {
       setLoading(true)
       const response = await api.get('/summary')
-      console.log(response.data)
       setSummary(response.data)
     } catch (error) {
-      console.log('entrou')
       Alert.alert('Ops', 'Não foi possível carregar o sumário de hábitos')
       console.log(error)
 
@@ -43,9 +41,9 @@ export function Home() {
     }
   }
 
-  useEffect(() => {
+  useFocusEffect(useCallback(() => {
     fetchData()
-  }, [])
+  }, []))
 
   if (loading) {
     return (

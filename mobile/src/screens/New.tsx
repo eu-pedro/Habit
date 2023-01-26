@@ -29,7 +29,7 @@ export function New() {
 
   function handleToggleWeekDay(weekDayIndex: number) {
     if (weekDays.includes(weekDayIndex)) {
-      setWeekDays((prevState) =>
+        setWeekDays((prevState) =>
         prevState.filter((weekDay) => weekDay !== weekDayIndex)
       );
     } else {
@@ -40,7 +40,7 @@ export function New() {
   async function handleCreateNewHabit(){
     try {
       if(!title.trim() || weekDays.length === 0){
-        Alert.alert('Novo hábito', 'Informe o nome do hábito e escolha a peridiocidade')
+        return Alert.alert('Novo hábito', 'Informe o nome do hábito e escolha a peridiocidade')
       }
 
       await api.post('habits', { title, weekDays })
